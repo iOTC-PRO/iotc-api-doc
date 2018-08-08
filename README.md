@@ -50,7 +50,7 @@ partnerId | Y | String | 50 | 合作方ID（iOTC申请）
 sign | Y | String | 50 | 签名
 phone | Y | String | 11 | 用户手机号
 userName | Y | String | 50 | 用户昵称
-isReal | Y | String | 10 | 是否实名
+isReal | Y | String | 10 | 是否实名,值为：“true”，“false"
 walletAddress | Y | String | | 钱包地址,JSON数据,示例说明:<br/>{"BTC":"38mH5oT82URX3Ayq1s2334ZVv9Rkjob8m5Vo",<br/>"ETH":"45mH5oT82URsdfq1s2334ZVv9Rkjob8m5Vo",<br/>"USDT": "76mH5oT82URsdfq1s2334ZVv9Rkjob8m5Vo"}<br/>当前支持的币种见【币种类型】
 
 返回：
