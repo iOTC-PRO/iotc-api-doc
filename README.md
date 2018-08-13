@@ -82,7 +82,7 @@ data 响应参数格式约定如下：
 <a>	使用接口前，所有请求都包含签名参数。签名使用标准签名算法”SHA1withRSA”。<br/>
 签名私钥由iOTC提供！</a>
 
-生成签名Demo（main方法直接运行），引用SignatureUtils中的部分防范见下方
+生成签名JavaDemo（main方法直接运行），引用SignatureUtils中的部分防范见下方
 	
 	//1、生成密钥对
 	KeyPair keyPair = null;
@@ -100,7 +100,7 @@ data 响应参数格式约定如下：
 				privateKey, resqData);
 	String signStr = Base64.encodeBase64String(sign);
 
-验证签名Demo（main方法直接运行），引用SignatureUtils中的部分防范见下方
+验证签名JavaDemo（main方法直接运行），引用SignatureUtils中的部分防范见下方
 
 	//1、生成公钥
 	String publicKeyStr = Base64.encodeBase64String(keyPair.getPublic()
@@ -189,9 +189,6 @@ SignatureUtils（main方法直接运行）
 		} while (c != -1);
 	}
   
-	
-		
-		
 
 #### 1.5 IP白名单
 <a>本文档所有接口均需要合作方提供有效IP地址方可进行访问。</a>
@@ -219,9 +216,9 @@ verifyUser | Y |  否 | 10 | 是否实名认证
 
 返回：
 
-参数名称  | 必填 |  长度 | 参数说明
-------------- | ------------- | ------------- | ------------- | :-------------
-hook | Y | S |  授权连接接口
+参数名称  | 必填 |  参数说明
+------------- | ------------- | :-------------
+hook | Y |  授权连接接口
 
 ##### 2.1.3 请求响应报文示例
 
@@ -232,6 +229,7 @@ hook | Y | S |  授权连接接口
     	"reqData":
     	   {
     	     "partnerId":"9000023456",
+    	     "code":"86",
     	     "nonce":"EA98B090CSF4534F26DBFD5SDF",
     	     "timestamp":"1534136312618",
     	     "mobile":"18600000001",
@@ -243,7 +241,7 @@ hook | Y | S |  授权连接接口
  2、响应报文示例
 
 	{
-    	"code":0,
+    	"code":"0",
    		"message":"操作成功",
     	"data":
     	   {
@@ -305,9 +303,9 @@ usdtAddr | N | 否 | | USDT地址
 
 返回：
 
-参数名称  | 必填  | 长度 | 参数说明
-------------- | ------------- | ------------- | ------------- | :-------------
-status | Y | | 更新状态:成功SUCCESS,失败FAIL
+参数名称  | 必填  | 参数说明
+------------- | ------------- | :-------------
+status | Y | 更新状态:成功SUCCESS,失败FAIL
 
 
 ### 3. 附录
