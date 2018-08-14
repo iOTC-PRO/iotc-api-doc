@@ -83,49 +83,20 @@ data 响应参数格式约定如下：
 签名私钥由iOTC提供！</a>
 
 生成签名JavaDemo（main方法直接运行），引用SignatureUtils中的部分防范见下方
-	
-	//1、生成密钥对
-	KeyPair keyPair = null;
-	keyPair = SignatureUtils.generateRsaKeyPair(1024);
-	//2、生成私钥
-	String privateKeyStr = Base64.encodeBase64String(keyPair.getPrivate()
-				.getEncoded());
-	//3、组装需要签名的数据
+
+	//1、组装需要签名的数据
 	Map<String,String> resqData = new HashMap<String,String>();
 	resqData.put("partnerId","1000001");
-	//4、将数据生成签名
+	//2、将数据生成签名
 	PrivateKey privateKey = SignatureUtils.getRsaPkcs8PrivateKey(Base64
 				.decodeBase64(privateKeyStr));
-	byte[] sign = SignatureUtils.sign(SignatureAlgorithm.SHA1WithRSA,
+	byte[] sign = SignatureUtils.sign("SHA1WithRSA",
 				privateKey, resqData);
 	String signStr = Base64.encodeBase64String(sign);
 
-验证签名JavaDemo（main方法直接运行），引用SignatureUtils中的部分防范见下方
-
-	//1、生成公钥
-	String publicKeyStr = Base64.encodeBase64String(keyPair.getPublic()
-					.getEncoded());
-	//2、验证签名
-	byte[] keyByte = Base64.decodeBase64(publicKeyStr);
-	PublicKey publicKey = SignatureUtils.getRsaX509PublicKey(keyByte);
-	//signStr 需要验证的签名串
-	byte[] signByte = Base64.decodeBase64(signStr);
-	boolean b = SignatureUtils.verify(SignatureAlgorithm.SHA1WithRSA, 
-	              publicKey, resqData, signByte);
 	
 SignatureUtils（main方法直接运行）
 
-生成密钥对方法
-
-	public static KeyPair generateRsaKeyPair(int keySize)
-			throws NoSuchAlgorithmException {
-		KeyPairGenerator keyPairGen = null;
-		keyPairGen = KeyPairGenerator.getInstance("RSA");
-		keyPairGen.initialize(keySize, new SecureRandom());
-		KeyPair keyPair = keyPairGen.generateKeyPair();
-		return keyPair;
-	}
-	
 生成签名方法
  
 	/**
@@ -137,15 +108,14 @@ SignatureUtils（main方法直接运行）
 	 * @throws GeneralSecurityException
 	 * @throws IOException
 	 */
-	public static byte[] sign(SignatureAlgorithm algorithm, PrivateKey privateKey,
+	public static byte[] sign(String algorithm, PrivateKey privateKey,
 	                          Map<String,String> resqData)
 			throws GeneralSecurityException,IOException {
 		String sortData = sort(resqData);
 		byte[] data = sortData.getBytes(Charset.forName("utf-8"));
 		ByteArrayInputStream input = new ByteArrayInputStream(data);
 		try {
-			Signature signature = Signature.getInstance(algorithm
-					.getSignAlgorithm());
+			Signature signature = Signature.getInstance(algorithm);
 
 			signature.initSign(privateKey);
 			doUpdate(signature, input);
@@ -174,6 +144,7 @@ SignatureUtils（main方法直接运行）
 		}
 		return resqData.substring(0, resqData.lastIndexOf("&"));
 	}
+	
 	private static void doUpdate(Signature signature, InputStream input)
 			throws IOException, SignatureException {
 
