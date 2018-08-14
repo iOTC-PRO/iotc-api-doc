@@ -159,6 +159,12 @@ SignatureUtils（main方法直接运行）
 			}
 		} while (c != -1);
 	}
+	
+	public static PrivateKey getRsaPkcs8PrivateKey(byte[] encodedKey)
+			throws InvalidKeySpecException, NoSuchAlgorithmException {
+		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+		return keyFactory.generatePrivate(new PKCS8EncodedKeySpec(encodedKey));
+	}
   
 
 #### 1.5 IP白名单
