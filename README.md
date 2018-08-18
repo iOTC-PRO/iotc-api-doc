@@ -65,10 +65,7 @@ data 响应参数格式约定如下：
 
 
 #### 1.2 接口地址
-<a>iOTC的测试环境请求地址<br/>
-   直连请求地址： http://api.aiwith.com/open<br/>
-   页面请求地址：http://plugin.aiwith.com/#/?hook=XXXXX<br/>
-   
+<a>
    iOTC的生产环境请求地址<br/>
 	直连请求地址： https://api.iotc.com/open<br/>
 	页面请求地址：https://plugin.iotc.com/#/?hook=XXXXX<br/></a>
