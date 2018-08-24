@@ -175,7 +175,7 @@ SignatureUtils（main方法直接运行）
 ------------- | :-------------
 接口地址  | /authConnect
 接口描述  | 合作方通过该接口建立iOTC的授权登录，<br/>iOTC将提供一个授权hook返回给合作方，<br/>合作方拿到hook后拼装跳转到iOTC的URL。<br/>URL地址[强制]约束规范：<br/>https://plugin.***.com/#/?hook=uckDPmq1hpbR716349549b58&source=foxone。
-业务规则  | hook的有效时间是 20s。
+业务规则  | hook的有效时间是 60s。
 接口模式  | 直连
 异步通知  | 否
 
@@ -193,6 +193,9 @@ verifyUser | Y |  否 | | 是否实名认证，值为"true" 或"false"
 参数名称  | 必填 |  参数说明
 ------------- | ------------- | :-------------
 hook | Y |  授权hook
+btcAddr | N | BTC地址
+ethAddr | N | ETH地址
+usdtAddr | N | USDT地址
 
 ##### 2.1.3 请求响应报文示例
 
@@ -219,7 +222,10 @@ hook | Y |  授权hook
    		"message":"操作成功",
     	"data":
     	   {
-    	     "hook":"9D55CFAF9BFEA98B090C34F26DBFD529"
+    	     "hook":"9D55CFAF9BFEA98B090C34F26DBFD529",
+    	     "btcAddr": "38mH5oT82URX3Ayq1s2334ZVv9Rkjob8m5Vo",
+			 "ethAddr": "45mH5oT82URsdfq1s2334ZVv9Rkjob8m5Vo",
+			 "usdtAddr": "76mH5oT82URsdfq1s2334ZVv9Rkjob8m5Vo"
     	   }
   	}
 
