@@ -68,7 +68,7 @@ data 响应参数格式约定如下：
 <a>
    iOTC的生产环境请求地址<br/>
 	直连请求地址： https://api.iotc.com/open<br/>
-	页面请求地址：https://plugin.iotc.com/#/?hook=XXXXX<br/></a>
+	页面请求地址：https://plugin.iotc.com?hook=XXXXX<br/></a>
 	
 #### 1.3 通用参数类型
 <a>本文档中的所有接口如果无特别说明，均使用HTTPS参数POST方式提交，使用JSON格式作为报文传输。字符集均采用UTF-8。</a><br/>
@@ -174,7 +174,7 @@ SignatureUtils（main方法直接运行）
 接口说明  | ------
 ------------- | :-------------
 接口地址  | /authConnect
-接口描述  | 合作方通过该接口建立iOTC的授权登录，<br/>iOTC将提供一个授权hook返回给合作方，<br/>合作方拿到hook后拼装跳转到iOTC的URL。<br/>URL地址[强制]约束规范：<br/>https://plugin.***.com/#/?hook=uckDPmq1hpbR716349549b58&source=foxone。
+接口描述  | 合作方通过该接口建立iOTC的授权登录，<br/>iOTC将提供一个授权hook返回给合作方，<br/>合作方拿到hook后拼装跳转到iOTC的URL。<br/>URL地址[强制]约束规范：<br/>https://plugin.***.com?hook=uckDPmq1hpbR716349549b58
 业务规则  | hook的有效时间是 60s。
 接口模式  | 直连
 异步通知  | 否
