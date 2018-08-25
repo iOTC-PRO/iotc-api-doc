@@ -175,7 +175,7 @@ SignatureUtils（main方法直接运行）
 ------------- | :-------------
 接口地址  | /authConnect
 接口描述  | 合作方通过该接口建立iOTC的授权登录，<br/>iOTC将提供一个授权hook返回给合作方，<br/>合作方拿到hook后拼装跳转到iOTC的URL。<br/>URL地址[强制]约束规范：<br/>https://plugin.***.com?hook=uckDPmq1hpbR716349549b58
-业务规则  | hook的有效时间是 60s。
+业务规则  | hook的有效时间是 60s,只能使用一次。
 接口模式  | 直连
 异步通知  | 否
 
